@@ -1,6 +1,5 @@
 <template>
   <v-container text-xs-center>
-
     <!-- <iframe
        width="560"
        height="315"
@@ -112,8 +111,23 @@
    </v-flex>
  </v-layout>-->
     <v-card dark class="js-carousel css-carousel" :style="getStyle">
-      <transition enter-active-class="animated bounceIn" mode="out-in">
-        <v-card-text  v-show="showWithDelay">
+      <animated-tada>
+        <div v-if="showWithDelay">
+          <h1>See my awesome animation</h1>
+        </div>
+      </animated-tada>
+      <animated-flip>
+        <div v-if="showWithDelay">
+          <h1>!!!!!!!!!!See my awesome animation</h1>
+        </div>
+      </animated-flip>
+      <animated-bounce-in>
+        <div v-if="showWithDelay">
+          <h1>%%%%%%%%%%%%%%%%See my awesome animation</h1>
+        </div>
+      </animated-bounce-in>
+      <transition enter-active-class="bounceIn">
+        <v-card-text v-if="showWithDelay">
           <p class="headline">
             УТП (УНИКАЛЬНОЕ ТОРГОВОЕ ПРЕДЛОЖЕНИЕ) ДЛЯ КРИПТОЭНТУЗИАСТОВ И ГРАМОТНЫХ ИНВЕСТОРОВ!</p>
 
@@ -121,7 +135,16 @@
             СТАНЬТЕ СОУЧРЕДИТЕЛЕМ БИРЖИ! ПОЛУЧАЙТЕ ЕЖЕМЕСЯЧНО СВОЙ ПРОЦЕНТ ОТ КАЖДОЙ ТОРГОВОЙ ОПЕРАЦИИ! ЛЮБАЯ КУПЛЯ И ПРОДАЖА ПРИНОСЯТ ВАМ ПРИБЫЛЬ!</p>
 
         </v-card-text>
+
       </transition>
+      <!--<v-card-text v-else>
+        <p class="headline">
+          !!!УТП (УНИКАЛЬНОЕ ТОРГОВОЕ ПРЕДЛОЖЕНИЕ) ДЛЯ КРИПТОЭНТУЗИАСТОВ И ГРАМОТНЫХ ИНВЕСТОРОВ!</p>
+
+        <p class="title orange&#45;&#45;text">
+          @@@СТАНЬТЕ СОУЧРЕДИТЕЛЕМ БИРЖИ! ПОЛУЧАЙТЕ ЕЖЕМЕСЯЧНО СВОЙ ПРОЦЕНТ ОТ КАЖДОЙ ТОРГОВОЙ ОПЕРАЦИИ! ЛЮБАЯ КУПЛЯ И ПРОДАЖА ПРИНОСЯТ ВАМ ПРИБЫЛЬ!</p>
+
+      </v-card-text>-->
       <v-card-text>
         <div class="wrapper">
           <div :class="logoClass" @click="showLogoAnimation = !showLogoAnimation"/>
@@ -151,6 +174,60 @@
         <br/>
         <br/>
       </v-card-text>
+      <hr/>
+      <v-card-text data-aos="fade-zoom-out" data-aos-duration="600"> TEST2<br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </v-card-text>
+      <hr/>
+      <v-card-text data-aos="slide-up" data-aos-duration="600"> TEST3<br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+          <div data-aos="zoom-in-up" >
+            <h1>See my awesome animatio@@@@@@@@@@@@@@@@n</h1>
+          </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div data-aos="fade-down">
+          <h1>See my awesome animation!!!</h1>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </v-card-text>
+      <h1>просто тексмт</h1>
     </v-card>
   </v-container>
 
@@ -168,7 +245,7 @@
           changeBackGround: 0
         },
         timers: {
-          changeBackground: 3000
+          changeBackground: 600
         },
         showLogoAnimation: false,
         items: [
@@ -201,14 +278,12 @@
       }, 0)
       setTimeout(() => {
         this.showWithDelay = true
-      }, 300)
+      }, 0)
     },
     computed: {
       getStyle: function () {
         let currentBgUrl = this.items[this.currentBg].src
         let style = `background-image: url('${currentBgUrl}')`
-        console.log(style)
-
         return style
       },
       logoClass: function () {
@@ -223,6 +298,15 @@
 </script>
 
 <style scoped="">
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 4.5s;
+  }
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
+  {
+    opacity: 0;
+  }
+
   .logo-animate {
     transition: all 1s ease;
     transform: rotate(720deg) scale(9);
@@ -235,13 +319,6 @@
   }
 
   .logo {
-    /* width: 150px;
-    height: 150px;
-    position: absolute;
-    left: -75px;
-    top: 82px;
-    background-image: url('/static/images/ste-coin.png');
-    background-size: cover; */
     width: 20px;
     height: 20px;
     position: absolute;

@@ -7,7 +7,12 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Vuex from 'vuex'
 import store from './store'
+import AnimatedVue from 'animated-vue'
+import 'animate.css/animate.css'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
+Vue.use(AnimatedVue)
 Vue.use(Vuex)
 Vue.use(Vuetify)
 
@@ -25,5 +30,8 @@ new Vue({
     this.$store.dispatch('LOAD_MENU')
     this.$store.dispatch('LOAD_FAQ')
     this.$store.dispatch('LOAD_USER')
+  },
+  created () {
+    Aos.init()
   }
 })

@@ -8,16 +8,16 @@
     </v-parallax>
     <v-layout row wrap>
       <v-flex xs12>
-        <v-card dark >
+        <v-card>
           <v-card-text class="px-0">Test faq</v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs12>
-        <v-card dark>
+        <v-card >
           <v-card-text class="px-0">
             <v-expansion-panel>
               <v-expansion-panel-content v-for="(item,i) in faqs" :key="i">
-                <div slot="header" class="subheading orange--text"><strong>{{item.question}}</strong></div>
+                <div slot="header" class="subheading orange--text"><strong >{{item.question}}</strong></div>
                 <v-card>
                   <v-card-text v-html="item.answer">
                    <!-- {{item.answer}}-->
@@ -28,7 +28,6 @@
           </v-card-text>
         </v-card>
       </v-flex>
-
     </v-layout>
   </v-container>
 </template>
